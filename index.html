@@ -93,8 +93,8 @@ book.vincecima.com
         </section>
 
         <section>
-          <h3>Starting Simple: Ad-Hoc Commands</h3>
-          <pre>
+          <h3>Starting Simple: Ad-Hoc Mode & Modules</h3>
+          <pre class="fragment">
             <code class="bash" data-trim contenteditable>
 ansible webservers -m apt -a "name=nginx state=present" \
 -i production.inventory -u root
@@ -106,14 +106,15 @@ ansible webservers -m apt -a "name=nginx state=present" \
               Modules control resources or execute commands
               <ul>
                 <li class="fragment">apt is for working with Ubuntu's package manager, apt-get</li>
-                <li class="fragment">File/directory manipluation, Git repo control and downloading a file are other examples</li>
+                <li class="fragment">File/directory manipulation, Git repo control and downloading a file are other examples</li>
               </ul
             </li>
+            <li class="fragment">Modules are idempotent.</li>
           </ol>
         </section>
 
         <section>
-          <h3>Starting Simple: Ad-Hoc Commands</h3>
+          <h3>Starting Simple: Ad-Hoc Mode & Modules</h3>
           <pre>
             <code class="bash" data-trim contenteditable>
 ansible webservers -m apt -a "name=nginx state=present" \
@@ -139,6 +140,12 @@ ansible webservers -m apt -a "name=nginx state=present" \
             &ldquo;If Ansible modules are the tools in your workshop, playbooks are your design plans.&rdquo;
           </blockquote>
           <img class="fragment" src="book.yml.02.png">
+          <pre class="fragment">
+            <code class="bash" data-trim contenteditable>
+              ansible-playbook -i production.inventory book.yml
+            </code>
+          </pre>
+
         </section>
 
         <section>
