@@ -80,6 +80,89 @@
             <li class="fragment">Configure NGINX to serve that file when book.vincecima.com is requested</li>
           </ol>
         </section>
+
+        <section>
+          <h3>Inventory: Telling Ansible Where to Go</h3>
+          <pre>
+            <code class="ini" data-trim contenteditable>
+[webservers]
+book.vincecima.com
+            </code>
+          </pre>
+          <ol>
+            <li class="fragment">Simple, INI based format</li>
+            <li class="fragment">Combine domain names into groups</li>
+          </ol>
+        </section>
+
+        <section>
+          <h3>Starting Simple: Ad-Hoc Commands</h3>
+          <pre>
+            <code class="bash" data-trim contenteditable>
+ansible webservers -m apt -a "name=nginx state=present" \
+-i production.inventory -u root
+            </code>
+          </pre>
+          <ol>
+            <li class="fragment">Specify group or groups to work against.</li>
+            <li class="fragment">
+              Modules control resources or execute commands
+              <ul>
+                <li class="fragment">apt is for working with Ubuntu's package manager, apt-get</li>
+                <li class="fragment">File/directory manipluation, Git repo control and downloading a file are other examples</li>
+              </ul
+            </li>
+          </ol>
+        </section>
+
+        <section>
+          <h3>Starting Simple: Ad-Hoc Commands</h3>
+          <pre>
+            <code class="bash" data-trim contenteditable>
+ansible webservers -m apt -a "name=nginx state=present" \
+-i production.inventory -u root
+            </code>
+          </pre>
+          <ol>
+            <li class="fragment">
+              Module arguments are additional info for a module
+              <ul>
+                <li class="fragment">name is the name of the package whose state we want to modify</li>
+                <li class="fragment">state=present tells Ansible that we want the package to be installed if not already</li>
+              </ul>
+            </li>
+            <li class="fragment">-i let's us specify an inventory file</li>
+            <li class="fragment">-u is what user to connect as on the remote system(s)</li>
+          </ol>
+        </section>
+
+        <section>
+          <h3>Playbooks: Easier to Read and Use</h3>
+          <blockquote class="fragment" cite="http://http://docs.ansible.com/playbooks.html">
+            &ldquo;If Ansible modules are the tools in your workshop, playbooks are your design plans.&rdquo;
+          </blockquote>
+          <img class="fragment" src="book.yml.02.png">
+        </section>
+
+        <section>
+          <h3>Copying Files From The Local To The Remote: Deploying My Site</h3>
+          <img class="fragment" src="book.yml.03.01.png">
+        </section>
+
+        <section>
+          <h3>Copying Files From The Local To The Remote: Deploying My Site</h3>
+          <img src="book.yml.03.02.png">
+        </section>
+
+        <section>
+          <h3>Controlling Services: Configuring and Restarting NGINX</h3>
+          <ol>
+            <li class="fragment">Deploy NGINX configuration</li>
+            <li class="fragment">Link NGINX configuration to sites-enabled directory</li>
+            <li class="fragment">Restart NGINX</li>
+            <li class="fragment">Visit book.vincecima.com and PROFIT</li>
+          </ol>
+        </section>
 			</div>
 		</div>
 

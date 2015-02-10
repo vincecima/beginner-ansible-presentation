@@ -1,0 +1,17 @@
+---
+- hosts: webservers
+  remote_user: root
+  tasks:
+  - name: install nginx
+    apt:
+      pkg: nginx
+      state: present
+  - name: make directory for site
+    file:
+      path: /var/apps/book.vincecima.com
+      state: directory
+      mode: 0755
+  - name: deploy index
+    copy:
+      src: index.html
+      dest: /var/apps/book.vincecima.com/index.html
